@@ -1047,7 +1047,7 @@ grunt-contrib-jst@0.5.1:
     grunt-lib-contrib "~0.5.1"
     lodash "~1.0.0"
 
-"grunt-contrib-sass@github:linemanjs/grunt-contrib-sass":
+grunt-contrib-sass@linemanjs/grunt-contrib-sass:
   version "0.9.2"
   resolved "https://codeload.github.com/linemanjs/grunt-contrib-sass/tar.gz/cac384efe5facc3dcd44e947925239b3d9cd2252"
   dependencies:
@@ -1718,6 +1718,10 @@ performance-now@^0.2.0:
 pkginfo@0.2.x:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.2.3.tgz#7239c42a5ef6c30b8f328439d9b9ff71042490f8"
+
+preact@^8.2.1:
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-8.2.1.tgz#674243df0c847884d019834044aa2fcd311e72ed"
 
 process-nextick-args@~1.0.6:
   version "1.0.7"
