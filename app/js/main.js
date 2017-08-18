@@ -1,22 +1,22 @@
-document.addEventListener('DOMContentLoaded', function() {
-  window.h = window.preact.h
+document.addEventListener('DOMContentLoaded', function () {
+  window.h = preact.h
 
   class CounterComponent extends preact.Component {
-    constructor(args) {
-      super();
+    constructor (args) {
+      super()
       this.count = 0
     }
 
-    render(args) {
+    render (args) {
       return h('div', {}, [
-        "count is " + this.count,
+        'count is ' + this.count,
         h('input', {
-          'type': 'submit',
-          'onClick': (e) => this.increment(e)
+          type: 'submit',
+          onClick: (e) => this.increment(e)
         })])
     }
 
-    increment(e) {
+    increment (e) {
       this.count += 1
       this.setState({})
     }

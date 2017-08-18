@@ -8,8 +8,14 @@ module.exports = function(lineman) {
       common: lineman.config.application.removeTasks.common.concat('jshint')
     },
     standard: {
+      options: {
+        globals: [
+          'preact',
+          'h'
+        ]
+      },
       app: {
-        src: [lineman.config.files.js.app]
+        src: [lineman.config.files.js.app],
       }
     },
     watch: {
