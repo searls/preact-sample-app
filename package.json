@@ -5,6 +5,7 @@
   "private": true,
   "author": "Justin Searls <searls@gmail.com>",
   "devDependencies": {
+    "babel-minify": "^0.2.0",
     "grunt-standard": "^3.1.0",
     "lineman": "~0.37.0",
     "preact": "^8.2.1"
