@@ -5,12 +5,13 @@
   "private": true,
   "author": "Justin Searls <searls@gmail.com>",
   "devDependencies": {
+    "grunt-standard": "^3.1.0",
     "lineman": "~0.37.0",
     "preact": "^8.2.1"
   },
   "scripts": {
     "start": "lineman run",
-    "dist": "lineman dist",
+    "dist": "lineman build",
     "test": "lineman spec-ci"
   }
 }
