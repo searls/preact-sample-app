@@ -13,7 +13,8 @@ module.exports = function(lineman) {
       options: {
         globals: [
           'preact',
-          'h'
+          'h',
+          'app'
         ]
       },
       app: {
