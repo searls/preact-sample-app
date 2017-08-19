@@ -9,11 +9,16 @@ module.exports = function(lineman) {
       common: lineman.config.application.removeTasks.common.concat('jshint'),
       dist: lineman.config.application.removeTasks.dist.concat('uglify')
     },
+    apiProxy: {
+      enabled: true,
+      prefix: 'api'
+    },
     standard: {
       options: {
         globals: [
           'preact',
           'h',
+          'fetch',
           'app'
         ]
       },

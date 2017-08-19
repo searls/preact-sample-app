@@ -2,17 +2,23 @@ window.h = preact.h
 window.app = window.app || {}
 app.component = app.component || {}
 
-app.component.main = ({query}) =>
+app.component.main = ({query, results, onChange}) =>
   h('div', {id: 'app'},
-    query ? h(app.component.results, {query}) : h(app.component.instructions, {}),
-    h(app.component.search, {query})
+    query ? h(app.component.results, {results}) : h(app.component.instructions, {}),
+    h(app.component.search, {
+      query,
+      onSearch: (query) => {
+        if (!query) return onChange({})
+        fetch(`/api/search/${query}`).then(res => res.json()).then(json => {
+          onChange({query: json.query, results: json.results})
+        })
+      }
+    })
   )
 
-app.component.results = ({query}) =>
+app.component.results = ({query, results}) =>
   h('div', {class: 'results'},
-    h(app.component.result, {japanese: 'fake results for ' + query, key: 0, id: 0}),
-    h(app.component.result, {japanese: '「' + query + '」って日本語じゃない、よ！', key: 1, id: 1}),
-    h(app.component.result, {japanese: 'なるほど', key: 2, id: 2})
+    results ? results.map(result => h(app.component.result, result)) : []
   )
 
 app.component.result = ({japanese, id}) =>
@@ -23,16 +29,17 @@ app.component.instructions = () =>
     To get started, just search for a token or something.
   `)
 
-app.component.search = ({query}) =>
+app.component.search = ({query, onSearch}) =>
   h('input', {type: 'search',
     placeholder: 'Shirt and…',
     value: query,
-    onKeyUp: (e) => app.render({query: e.target.value})
+    onKeyUp: (e) => onSearch(e.target.value)
   })
 
 app.render = (props) => {
+  console.log('rendering', props)
   preact.render(
-    h(app.component.main, props),
+    h(app.component.main, Object.assign({}, props, {onChange: app.render})),
     document.body,
     document.getElementById('app')
   )
