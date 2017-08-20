@@ -2,22 +2,36 @@ window.h = preact.h
 window.app = window.app || {}
 app.component = app.component || {}
 
-app.component.main = ({query, results, selected, onChange}) => {
-  let page
-  if (selected) {
-    page = h(app.component.show, {
+app.component.main = ({query, results, selected, onChange}) =>
+  h(window.preactRouter, {id: 'app'},
+    h(app.component.show, {
+      path: '/sentence/:selected',
       query,
-      selected,
+      results,
       onGoBack: () => onChange({query, results})
+    }),
+    h(app.component.index, {
+      default: true,
+      query,
+      results,
+      onChange
     })
-  } else {
-    page = h(app.component.index, {query, results, onChange})
-  }
-  return h('div', {id: 'app'}, page)
-}
+  )
 
-app.component.show = ({query, selected, onGoBack}) =>
-  h('div', {})
+app.component.show = ({selected, query, results, onGoBack}) => {
+  const sentence = results.find(result => String(result.id) === String(selected))
+  return h('div', {class: 'sentence'},
+    h('div', {}, sentence.japanese),
+    h('div', {}, sentence.english),
+    h('a', {href: `japanese://search/${sentence.japanese}`}, 'Search in Japanese.app'),
+    h('br'),
+    h('a', {href: `midori://translate?text=${sentence.japanese}`}, 'Translate in Midori.app'),
+    h('div', {class: 'go-back'},
+      h('a', {href: `/search/${query}`}, '<-'),
+      query
+    )
+  )
+}
 
 app.component.index = ({query, results, onChange}) =>
   h('div', {},
@@ -59,7 +73,7 @@ app.render = (props) => {
   preact.render(
     h(app.component.main, Object.assign({}, props, {onChange: app.render})),
     document.body,
-    document.getElementById('app')
+    document.body.lastElementChild
   )
 }
 
