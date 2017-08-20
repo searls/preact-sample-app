@@ -1,6 +1,6 @@
 {
-  "name": "sample-preact-app",
-  "description": "A stupid sample preact app",
+  "name": "sentense",
+  "description": "A little example sentence app",
   "version": "0.0.1",
   "private": true,
   "author": "Justin Searls <searls@gmail.com>",
@@ -8,7 +8,8 @@
     "babel-minify": "^0.2.0",
     "grunt-standard": "^3.1.0",
     "lineman": "~0.37.0",
-    "preact": "^8.2.1"
+    "preact": "^8.2.1",
+    "preact-router": "^2.5.5"
   },
   "scripts": {
     "start": "lineman run",
