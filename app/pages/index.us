@@ -3,8 +3,10 @@
   <head>
     <title><%= pkg.name %></title>
 
-    <link rel="stylesheet" type="text/css" href="<%= css %>" media="all" />
-    <script type="text/javascript" src="<%= js %>"></script>
+    <link rel="stylesheet" type="text/css" href="/<%= css %>" media="all" />
+    <script type="text/javascript" src="/<%= js %>"></script>
+    <base href="/" />
   </head>
-  <body />
+  <body>
+  </body>
 </html>
