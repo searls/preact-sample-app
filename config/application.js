@@ -9,9 +9,8 @@ module.exports = function(lineman) {
       common: lineman.config.application.removeTasks.common.concat('jshint'),
       dist: lineman.config.application.removeTasks.dist.concat('uglify')
     },
-    apiProxy: {
-      enabled: true,
-      prefix: 'api'
+    server: {
+      pushState: true
     },
     standard: {
       options: {
